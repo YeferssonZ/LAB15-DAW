@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmentos/header :: head">
+	<title>Resultados de búsqueda</title>
+</head>
+
+<body>
+	<div th:insert="/fragmentos/header :: menu"></div>
+	<div class="container mt-4">
+		<div class="border p-3" style="background-color: #f8f9fa;">
+			<h2 style="background-color: violet; color: white; padding: 10px; 
+			margin-bottom: 10px; text-align: center;">Resultados de búsqueda de Tareas</h2>
+			<div th:if="${mensaje}" style="text-align: center; font-size: 20px;">
+				<p th:text="${mensaje}"></p>
+			</div>
+
+			<table th:if="${tareas}" class="table table-bordered" style="text-align: center;">
+				<thead style="background-color: violet; color: white;">
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">DESCRIPCION</th>
+						<th scope="col">FECHA</th>
+						<th scope="col">REALIZADO</th>
+						<th scope="col">ACCIONES</th>
+					</tr>
+				</thead>
+				<tbody style="text-align: center;">
+					<tr th:each="tarea : ${tareas}">
+						<th th:text="${tarea.id}" scope="row"></th>
+						<td th:text="${tarea.descripcion}"></td>
+						<td th:text="${tarea.fecha}"></td>
+						<td th:text="${tarea.realizado}"></td>
+						<td>
+							<a href="#" class="btn btn-success">Editar</a>
+							<a href="#" class="btn btn-danger">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script src="funciones.js"></script>
+</body>
+
+</html>

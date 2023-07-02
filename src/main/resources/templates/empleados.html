@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<head th:replace="fragmentos/header :: head"></head>
+<body>
+	<div th:insert="/fragmentos/header :: menu"> </div>
+	<div class="container mt-4">
+		<div class="border p-3" style="background-color: #f8f9fa;">
+			<h2 style="background-color: #2196F3; color: white; 
+			padding: 10px; text-align: center;">Empleados</h2>
+			<table class="table table-bordered">
+			  <thead style="background-color: #2196F3; color: white; text-align: center;">
+			    <tr>
+			      <th style="width: 40px;">ID</th>
+			      <th style="width: 230px;">NOMBRES</th>
+			      <th style="width: 180px;">ROL</th>
+			      <th style="width: 150px;">ACCIONES</th>
+			    </tr>
+			  </thead>
+			  <tbody style="text-align: center;">
+			    <tr th:each="empleado : ${empleados}">
+			      <td th:text="${empleado.id}"></td>
+			      <td th:text="${empleado.nombre}"></td>
+			      <td th:text="${empleado.rol}"></td>
+			      <td>
+			      	<a th:href="@{/editarEmpleado/}+${empleado.id}" class="btn btn-success btn-md">Editar</a>
+			      	<a th:onclick="eliminar([[${empleado.id}]])" class="btn btn-danger btn-md">Eliminar</a>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+			<div style="border-top: 1px solid #dee2e6; padding-top: 10px;">
+				<a href="/agregarEmpleado" class="btn btn-secondary btn-2g active" 
+				role="button" aria-pressed="true">Agregar</a>
+			</div>
+		</div>
+	</div>
+	<script src="funciones.js"></script>
+</body>
+</html>

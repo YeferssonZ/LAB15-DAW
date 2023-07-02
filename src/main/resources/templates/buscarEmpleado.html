@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmentos/header :: head">
+	<title>Resultados de búsqueda</title>
+</head>
+
+<body>
+	<div th:insert="/fragmentos/header :: menu"></div>
+	<div class="container mt-4">
+		<div class="border p-3" style="background-color: #f8f9fa;">
+			<h2 style="background-color: #2196F3; color: white; padding: 10px; text-align: center; 
+			margin-bottom: 10px;">Resultados de búsqueda de Empleados</h2>
+
+			<div th:if="${mensaje}" style="text-align: center; font-size: 20px;">
+				<p th:text="${mensaje}"></p>
+			</div>
+
+			<table th:if="${empleados}" class="table table-bordered" style="text-align: center;">
+				<thead style="background-color: #2196F3; color: white; text-align: center;">
+			    <tr>
+			      <th style="width: 40px;">ID</th>
+			      <th style="width: 230px;">NOMBRES</th>
+			      <th style="width: 180px;">ROL</th>
+			      <th style="width: 150px;">ACCIONES</th>
+			    </tr>
+			  </thead>
+				<tbody>
+					<tr th:each="empleado : ${empleados}">
+						<td th:text="${empleado.id}" class="bold"></td>
+						<td th:text="${empleado.nombre}" class="bold"></td>
+						<td th:text="${empleado.rol}" class="bold"></td>
+						<td style="text-align: center;">
+							<a href="#" class="btn btn-success btn-md">Editar</a>
+							<a href="#" class="btn btn-danger btn-md">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
